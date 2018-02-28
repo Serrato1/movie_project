@@ -1,0 +1,29 @@
+{
+  "name": "movie_project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vrethao-Rastha/movie_project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vrethao-Rastha/movie_project/issues"
+  },
+  "homepage": "https://github.com/Vrethao-Rastha/movie_project#readme",
+  "dependencies": {
+    "body": "^5.1.0",
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "knex": "^0.14.4",
+    "parser": "^0.1.4",
+    "pg": "^7.4.1"
+  }
+}
