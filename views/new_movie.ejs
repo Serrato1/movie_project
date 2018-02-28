@@ -1,0 +1,190 @@
+<html>
+<head>
+  <!-- <link rel="stylesheet"    href="../style/main.css" type="text/css" /> -->
+  <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+  <script src="https://use.fontawesome.com/44d41c7531.js"></script>
+  <style>
+    body{
+      /* background:#25373D; */
+      background:#D1D5D8;
+      margin:auto;
+      font-family: 'Rubik';
+    }
+    .main{
+      display:grid;
+      grid-template-columns: repeat(8,1fr);
+      grid-auto-rows: 60px auto;
+    }
+    .top-nav{
+      grid-column: span 9;
+      /* background:#25373D; */
+      background: #E7E7E7;
+      display:grid;
+      grid-template-columns: 4fr 2fr 2fr 1fr 1fr;
+      grid-auto-rows: 60px 100px auto 20px;
+
+    }
+    .search-container{
+      background:white;
+      height:40px;
+      width:80%;
+      margin-top:10px;
+      border:none;
+      outline:none;
+      opacity:.5;
+      margin-left: 5px;
+      display:inline-block;
+      transition:.5s;
+      font-size:15px;
+    }
+    .search-container:hover{
+      width:100%;
+      font-size:25px;
+      color:grey;
+      opacity:1;
+    }
+
+    .logo-container{
+      color:white;
+      font-size:30px;
+      height:40px;
+      margin-top:10px;
+      margin-left:5px;
+      color:grey;
+      text-align:center;
+    }
+
+    .search-option{
+      text-align:center;
+    }
+    .search-option i{
+      margin-top:15px;
+      color:grey;
+      font-size:35px;
+    }
+    i:hover{
+      cursor:pointer;
+      transform: rotate(7deg);
+    }
+    .up{
+      color:green;
+    }
+    .down{
+      color:red;
+    }
+
+
+    .button-container{
+      grid-column: 3/7;
+      height:60px;
+      margin-top:20px;
+    }
+    .button-container button{
+      border:none;
+      appearance:none;
+      width:200px;
+      height:50px;
+      margin-left:calc(50% - 100px);
+      border-radius:10px;
+      font-size:20px;
+      color:grey;
+      outline:none;
+    }
+
+    .movie-content{
+      grid-column: 2/8;
+      height:800px;
+      display:grid;
+      grid-template-columns: repeat(3,1fr);
+      grid-auto-rows: 300px;
+    }
+    .movie-container{
+      grid-column:span 1;
+      background:#f2f2f2;
+      width:90%;
+      margin-left:5%;
+      display:grid;
+      grid-template-columns: repeat(4,1fr);
+      grid-auto-rows: 1fr 8fr 1fr;
+    }
+    .title{
+      grid-column:span 4;
+      font-size:25px;
+      color:black;
+      text-align:center;
+    }
+    .description{
+      grid-column:span 4;
+      font-size:20px;
+      margin-left:10px;
+      color:grey;
+    }
+    .votes-container{
+      position:relative;
+      grid-column:span 4;
+    }
+    .no-button{
+      border:none;
+      appearance:none;
+      background:none;
+      font-size:30px;
+      outline:none;
+    }
+    #up{
+      position:absolute;
+      left:5px;
+      bottom:5px;
+    }
+    #down{
+      position:absolute;
+      right:5px;
+      bottom:5px;
+    }
+
+
+    .form-container{
+      text-align:center;
+      grid-column:4/6;
+      display:grid;
+      grid-template-columns: 1fr;
+      grid-row-gap:5px;
+    }
+
+    .form-container input{
+      border:none;
+      appearance:none;
+      height:35px;
+      outline:none;
+
+    }
+    .form-container button{
+      height:35px;
+      outline:none;
+
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <!-- TOP NAVIGATION -->
+    <div class="top-nav">
+      <input class="search-container" placeholder="ex. Zoolander" />
+      <h2 class="logo-container">MOVIES</h2>
+      <div></div>
+      <div class="search-option"><i class="fa fa-thumbs-up "></i></div>
+      <div class="search-option"><i class="fa fa-thumbs-down "></i></div>
+    </div>
+    <form class="form-container" action="/create_movie" method="post">
+      <h2>CREATE NEW MOVIE</h2>
+      <input type="text" name="title" placeholder="Enter Movie Title"></input>
+      <input type="text" name="description" placeholder="Enter Description"></input>
+      <input type="text" name="genre" placeholder="Enter Genre"></input>
+      <button>ADD</button>
+    </form>
+
+
+  </div>
+
+
+</body>
+</html>

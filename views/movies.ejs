@@ -1,16 +1,209 @@
-<!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title></title>
-  </head>
-  <body>
-    <h3>Add a new movie</h3>
-    <form action="/" method="post">
-      <input type="text" name="title" placeholder="title">
-      <input type="text" name="description" placeholder="description">
-      <input type="text" name="genre" placeholder="genre">
-      <input type="submit">
+<head>
+  <!-- <link rel="stylesheet"    href="<%= dir %>" type="text/css" /> -->
+  <link href="https://fonts.googleapis.com/css?family=Rubik" rel="stylesheet">
+  <script src="https://use.fontawesome.com/44d41c7531.js"></script>
+  <style>
+    body{
+      /* background:#25373D; */
+      background:#D1D5D8;
+      margin:auto;
+      font-family: 'Rubik';
+    }
+    .main{
+      display:grid;
+      grid-template-columns: repeat(8,1fr);
+      grid-auto-rows: 60px auto;
+    }
+    .top-nav{
+      grid-column: span 9;
+      /* background:#25373D; */
+      background: #E7E7E7;
+      display:grid;
+      grid-template-columns: 4fr 2fr 2fr 1fr 1fr;
+      grid-auto-rows: 60px 100px auto 20px;
+
+    }
+    .search-container{
+      background:white;
+      height:40px;
+      width:80%;
+      margin-top:10px;
+      border:none;
+      outline:none;
+      opacity:.5;
+      margin-left: 5px;
+      display:inline-block;
+      transition:.5s;
+      font-size:15px;
+    }
+    .search-container:hover{
+      width:100%;
+      font-size:25px;
+      color:grey;
+      opacity:1;
+    }
+
+    .logo-container{
+      color:white;
+      font-size:30px;
+      height:40px;
+      margin-top:10px;
+      margin-left:5px;
+      color:grey;
+      text-align:center;
+    }
+
+    .search-option{
+      text-align:center;
+    }
+    .search-option i{
+      margin-top:15px;
+      color:grey;
+      font-size:35px;
+    }
+    i:hover{
+      cursor:pointer;
+      transform: rotate(7deg);
+    }
+    .up{
+      color:green;
+    }
+    .down{
+      color:red;
+    }
+
+
+    .button-container{
+      grid-column: 3/7;
+      height:60px;
+      margin-top:20px;
+    }
+    .button-container input{
+      border:none;
+      appearance:none;
+      width:200px;
+      height:50px;
+      margin-left:calc(50% - 100px);
+      border-radius:10px;
+      font-size:20px;
+      color:grey;
+      outline:none;
+      cursor:pointer;
+    }
+
+
+    .movie-content{
+      grid-column: 2/8;
+      height:800px;
+      display:grid;
+      grid-template-columns: repeat(3,1fr);
+      grid-auto-rows: 300px;
+      grid-row-gap: 20px;
+    }
+    .movie-container{
+      grid-column:span 1;
+      background:#f2f2f2;
+      width:90%;
+      margin-left:5%;
+      display:grid;
+      grid-template-columns: repeat(4,1fr);
+      grid-auto-rows: 1fr 8fr 1fr;
+    }
+    .title{
+      grid-column:span 4;
+      font-size:25px;
+      color:black;
+      text-align:center;
+    }
+    .description{
+      grid-column:span 4;
+      font-size:20px;
+      margin-left:10px;
+      color:grey;
+      min-height:50px;
+      overflow:scroll;
+
+    }
+    .votes-container{
+      position:relative;
+      grid-column:span 4;
+    }
+    .no-button{
+      border:none;
+      appearance:none;
+      background:none;
+      font-size:30px;
+      outline:none;
+    }
+    #up{
+      position:absolute;
+      left:5px;
+      bottom:10px;
+    }
+    #down{
+      position:absolute;
+      right:5px;
+      bottom:10px;
+    }
+
+
+    .form-container{
+      text-align:center;
+      grid-column:4/6;
+      display:grid;
+      grid-template-columns: 1fr;
+      grid-row-gap:5px;
+    }
+
+    .form-container input{
+      border:none;
+      appearance:none;
+      height:35px;
+      outline:none;
+
+    }
+    .form-container button{
+      height:35px;
+      outline:none;
+
+    }
+  </style>
+</head>
+<body>
+  <div class="main">
+    <!-- TOP NAVIGATION -->
+    <div class="top-nav">
+      <input class="search-container" placeholder="ex. Zoolander" />
+      <h2 class="logo-container">MOVIES</h2>
+      <div></div>
+      <div class="search-option"><i class="fa fa-thumbs-up "></i></div>
+      <div class="search-option"><i class="fa fa-thumbs-down "></i></div>
+    </div>
+    <!-- BUTTON -->
+    <form class="button-container" action="/form" method="get">
+        <input type="submit" class="button" value="ADD MOVIE"></input>
     </form>
-  </body>
+    <!-- MOVIE CONTENT -->
+    <div class="movie-content">
+      <% for(i=0 ; i < movies.length ; i++){ %>
+        <div class="movie-container">
+          <p class="title"><%= movies[i].title %></p>
+          <p class="description">Description: <%=movies[i].description%></p>
+          <p class="genre"><%=movies[i].genre%></p>
+          <p class="description"><%=movies[i].vote_count%></p>
+
+          <div class="votes-container" >
+            <a href="/upvote/<%=movies[i].id %>/<%= movies[i].vote_count%> " class="no-button" id="up"><i class="fa fa-thumbs-up" style="color:green" ></i></a>
+            <a href="/downvote/<%=movies[i].id %>/<%= movies[i].vote_count %>" class="no-button" id="down"><i class="fa fa-thumbs-down"  style="color:red" ></i></a>
+          </div>
+        </div>
+      <% } %>
+
+      </div>
+    </div>
+  </div>
+
+
+</body>
 </html>
