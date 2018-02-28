@@ -8,6 +8,7 @@ var bodyParser = require('body-parser');
 var app = express();
 var port = process.env.PORT || 8000;
 app.use(bodyParser.urlencoded({ extended: true }));
+// app.use(express.static(__dirname + '/public'));
 
 app.set('view engine', 'ejs');
 
@@ -66,8 +67,17 @@ app.get('/downvote/:movie_id/:current_votes',function(req,res){
     res.redirect('/')
   })
 })
-
-
+//
+// app.post('/search_movie',(res,req)=>{
+//   knex("movies")
+//   .where('movie.title','=',`${req.body.movie_title}`)
+//   .then((result)=>{
+//     res.render('movies', {movies:data, dir: __dirname + '/style/main.css'});
+//   })
+//   .catch((err)=>{
+//     console.log(err);
+//   })
+// })
 app.listen(port, function () {
   console.log("running on port:", port);
 });
